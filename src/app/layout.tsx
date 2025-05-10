@@ -1,12 +1,28 @@
 import './globals.css';
+import '@fontsource/jetbrains-mono';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import HydrationSuppressor from '../components/HydrationSuppressor';
 import HydrationErrorBoundary from '../components/HydrationErrorBoundary';
+import { ThemeProvider } from '../components/ThemeProvider';
+import ThemeToggle from '../components/ThemeToggle';
+import { JetBrains_Mono, Inter } from 'next/font/google';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono'
+});
 
 export const metadata = {
-  title: 'FileVault - Secure File Sharing',
-  description: 'A modern file sharing platform with secure, temporary access via PIN codes and direct links.',
+  title: 'Next File Share',
+  description: 'A file uploading and downloading site with temporary access via links or generated PINs.',
 };
 
 export default function RootLayout({
@@ -15,46 +31,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className="bg-gray-50">
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetBrainsMono.variable}`}>
+      <body suppressHydrationWarning className="bg-gradient-to-br from-white to-slate-100 dark:from-slate-900 dark:to-slate-800 font-sans">
         <HydrationSuppressor />
         <HydrationErrorBoundary>
-          <div className="min-h-screen flex flex-col">
-            <header className="bg-white border-b border-gray-200">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                  <div className="flex items-center">
-                    <Link href="/" className="flex-shrink-0 flex items-center">
-                      <svg className="h-8 w-8 text-primary-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                        <line x1="6" y1="1" x2="6" y2="4"></line>
-                        <line x1="10" y1="1" x2="10" y2="4"></line>
-                        <line x1="14" y1="1" x2="14" y2="4"></line>
-                      </svg>
-                      <span className="ml-2 text-xl font-bold text-gray-900">FileVault</span>
-                    </Link>
+          <ThemeProvider>
+            <div className="min-h-screen flex flex-col">
+            <header className="glass-effect sticky top-0 z-10 py-4 shadow-sm border-b border-slate-200 dark:border-slate-700">
+              <div className="container mx-auto flex justify-between items-center px-4">
+                <Link href="/" className="flex items-center space-x-2">
+                  <div className="gradient-bg rounded-full h-8 w-8 flex items-center justify-center shadow-lg">
+                    <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
                   </div>
-                  <nav className="flex items-center space-x-8">
-                    <Link href="/" className="text-base font-medium text-gray-700 hover:text-primary-600 transition duration-150 ease-in-out">
-                      Home
-                    </Link>
-                    <Link href="/upload" className="text-base font-medium text-gray-700 hover:text-primary-600 transition duration-150 ease-in-out">
-                      Upload File
-                    </Link>
-                    <Link 
-                      href="/upload" 
-                      className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                    >
-                      Share a File
-                    </Link>
-                  </nav>
-                </div>
+                  <span className="font-bold text-xl text-slate-800 dark:text-white">FileShare</span>
+                </Link>
+                <nav className="flex items-center">
+                  <ul className="flex space-x-6 mr-4">
+                    <li><Link href="/" className="text-slate-700 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition">Home</Link></li>
+                    <li><Link href="/upload" className="text-slate-700 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-400 transition">Upload</Link></li>
+                  </ul>
+                  <ThemeToggle />
+                </nav>
               </div>
             </header>
-            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
+            
+            <main className="flex-grow container mx-auto px-4 py-8">
+              {children}
+            </main>
+            
             <Footer />
           </div>
+          </ThemeProvider>
         </HydrationErrorBoundary>
       </body>
     </html>

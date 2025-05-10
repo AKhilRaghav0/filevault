@@ -102,7 +102,8 @@ const PinGenerator: React.FC = () => {
                         ref={inputRefs[index]}
                         type="text"
                         maxLength={1}
-                        className="w-12 h-12 text-center text-xl font-mono border border-secondary-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500"
+                        className="w-12 h-12 text-center text-xl font-mono border border-secondary-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500 text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-700 font-['JetBrains_Mono', monospace]"
+                        style={{ fontFamily: "'JetBrains Mono', monospace" }}
                         value={pin[index] || ''}
                         onChange={(e) => handlePinChange(e, index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}

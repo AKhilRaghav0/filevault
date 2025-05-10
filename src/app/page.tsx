@@ -5,16 +5,17 @@ import ClientFileDownloader from '../components/ClientFileDownloader';
 export default function Home() {
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full max-w-4xl mx-auto text-center py-12">
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary-500 to-blue-600 text-transparent bg-clip-text">
-          Secure File Sharing Made Simple
+      {/* Hero Section */}
+      <div className="w-full max-w-5xl mx-auto text-center py-16 px-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 gradient-text">
+          Secure File Sharing <br className="hidden sm:block" />Made Simple
         </h1>
-        <p className="text-xl text-secondary-600 mb-10 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-12 max-w-2xl mx-auto">
           Upload, share, and download files with temporary access via secure links or 6-digit PINs.
         </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-6 mt-8">
-          <Link href="/upload" className="flex items-center justify-center gap-2 btn-primary py-3 px-8 text-lg">
+          <Link href="/upload" className="flex items-center justify-center gap-2 btn-primary py-3 px-8 text-lg shadow-custom">
             <FileIcon className="w-5 h-5" />
             Upload a File
           </Link>
@@ -25,28 +26,63 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="w-full bg-secondary-50 py-16 mt-12">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">How It Works</h2>
+      {/* Features Section */}
+      <div className="w-full bg-slate-50 dark:bg-slate-800/50 py-20 mt-12 backdrop-blur-sm">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-slate-800 dark:text-white">How It Works</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-teal-400 mx-auto"></div>
+          </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-custom">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold">1</div>
-              <h3 className="text-xl font-semibold mb-2">Upload Your File</h3>
-              <p className="text-secondary-600">Simply drag and drop your file or select it from your device.</p>
+            <div className="card card-hover border border-slate-200 dark:border-slate-700">
+              <div className="mb-6 flex items-center">
+                <div className="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg mr-4">1</div>
+                <h3 className="text-xl font-semibold text-slate-800 dark:text-white">Upload Your File</h3>
+              </div>
+              <p className="text-slate-600 dark:text-slate-300">Simply drag and drop your file or select it from your device. Supports files up to 100MB.</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-custom">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold">2</div>
-              <h3 className="text-xl font-semibold mb-2">Get Secure Access</h3>
-              <p className="text-secondary-600">Receive a unique link or 6-digit PIN to share with others.</p>
+            <div className="card card-hover border border-slate-200 dark:border-slate-700">
+              <div className="mb-6 flex items-center">
+                <div className="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg mr-4">2</div>
+                <h3 className="text-xl font-semibold text-slate-800 dark:text-white">Get Secure Access</h3>
+              </div>
+              <p className="text-slate-600 dark:text-slate-300">Receive a unique link and 6-digit PIN to share with others. Your files remain private and secure.</p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-custom">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold">3</div>
-              <h3 className="text-xl font-semibold mb-2">Download Anywhere</h3>
-              <p className="text-secondary-600">Access and download files using the PIN or direct link.</p>
+            <div className="card card-hover border border-slate-200 dark:border-slate-700">
+              <div className="mb-6 flex items-center">
+                <div className="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg mr-4">3</div>
+                <h3 className="text-xl font-semibold text-slate-800 dark:text-white">Download Anywhere</h3>
+              </div>
+              <p className="text-slate-600 dark:text-slate-300">Access and download files using the PIN or direct link. No account required to download shared files.</p>
             </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* FAQ Section */}
+      <div className="w-full max-w-4xl mx-auto py-16 px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-slate-800 dark:text-white">Frequently Asked Questions</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-teal-400 mx-auto"></div>
+        </div>
+        
+        <div className="space-y-6">
+          <div className="card border border-slate-200 dark:border-slate-700">
+            <h3 className="text-lg font-medium text-slate-800 dark:text-white mb-2">How long are files available for download?</h3>
+            <p className="text-slate-600 dark:text-slate-300">Files are available for 7 days after upload, after which they are automatically deleted from our servers.</p>
+          </div>
+          
+          <div className="card border border-slate-200 dark:border-slate-700">
+            <h3 className="text-lg font-medium text-slate-800 dark:text-white mb-2">Is my data secure?</h3>
+            <p className="text-slate-600 dark:text-slate-300">Yes! Files can only be accessed with the unique download link or PIN code. All uploads and downloads are encrypted.</p>
+          </div>
+          
+          <div className="card border border-slate-200 dark:border-slate-700">
+            <h3 className="text-lg font-medium text-slate-800 dark:text-white mb-2">What file types can I upload?</h3>
+            <p className="text-slate-600 dark:text-slate-300">You can upload any type of file up to 100MB in size. We support documents, images, videos, archives, and more.</p>
           </div>
         </div>
       </div>

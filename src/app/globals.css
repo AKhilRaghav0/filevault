@@ -4,36 +4,75 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  --background-rgb: 248, 250, 252;
+  --accent-gradient-from: 79, 70, 229;
+  --accent-gradient-to: 45, 212, 191;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-rgb: 10, 10, 10;
+    --background-rgb: 15, 23, 42;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-rgb));
-  font-family: 'Inter', sans-serif;
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, rgb(var(--accent-gradient-from)) 0%, rgb(var(--accent-gradient-to)) 100%);
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-400;
+}
+
+.card {
+  @apply bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl;
+}
+
+.glass-effect {
+  @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-md;
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition duration-200 font-medium;
+    @apply bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition duration-200 font-medium;
   }
   
   .btn-secondary {
-    @apply bg-secondary-200 text-secondary-800 px-4 py-2 rounded-md hover:bg-secondary-300 transition duration-200 font-medium;
+    @apply bg-secondary-200 text-secondary-800 px-4 py-2 rounded-lg hover:bg-secondary-300 transition duration-200 font-medium;
   }
   
+  .btn-ghost {
+    @apply bg-transparent text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition duration-200;
+  }
   .input {
-    @apply border border-secondary-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent w-full;
+    @apply border border-secondary-300 dark:border-slate-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent w-full text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-700;
+  }
+  
+  .upload-drop-zone {
+    @apply border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl p-8 transition-colors duration-300 flex flex-col items-center justify-center cursor-pointer;
+  }
+  
+  .upload-drop-zone-active {
+    @apply border-primary-500 bg-primary-50 dark:bg-slate-800;
+  }
+  
+  .shadow-custom {
+    @apply shadow-lg shadow-slate-200/50 dark:shadow-slate-900/30;
+  }
+  
+  .pin-input-group {
+    @apply flex justify-between gap-2;
+  }
+    .pin-input {
+    @apply w-10 h-12 text-center text-xl font-['JetBrains_Mono'] border border-slate-300 dark:border-slate-600 rounded-lg shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500 text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-700;
   }
 }

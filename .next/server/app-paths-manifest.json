@@ -1,5 +1,6 @@
 {
+  "/api/upload/route": "app/api/upload/route.js",
+  "/api/verify-pin/route": "app/api/verify-pin/route.js",
   "/page": "app/page.js",
-  "/upload/page": "app/upload/page.js",
-  "/download/[id]/page": "app/download/[id]/page.js"
+  "/upload/page": "app/upload/page.js"
 }
